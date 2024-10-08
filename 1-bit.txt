@@ -1,0 +1,59 @@
+Certainly, I'll explain quantum phase estimation in the HHL algorithm in simple terms for people familiar with physics but not quantum computing.
+
+Quantum phase estimation in the HHL algorithm is a technique used to extract information about the eigenvalues of a matrix. Here's a simplified explanation:
+
+1. Background: In physics, you're likely familiar with eigenvectors and eigenvalues, which are important in many areas like vibration analysis or quantum mechanics.
+
+2. The problem: In the HHL algorithm, we need to solve a system of linear equations. This involves finding information about the eigenvalues of the matrix representing this system.
+
+3. Classical vs. Quantum: Classically, finding eigenvalues for large matrices can be computationally expensive. Quantum phase estimation offers a potentially faster way to estimate these eigenvalues.
+
+4. The process: 
+   - We start with a quantum state that represents our problem.
+   - We apply a series of quantum operations (imagine these as very precise rotations of the quantum state).
+   - These operations are designed so that the rotation angles encode information about the eigenvalues we're interested in.
+
+5. Measurement: After these operations, we measure the quantum state. The result gives us an estimate of the phase, which is directly related to the eigenvalue we're looking for.
+
+6. Advantage: This process can potentially find eigenvalue information much faster than classical methods for certain types of problems, which is crucial for the speed-up that the HHL algorithm aims to achieve.
+
+In essence, quantum phase estimation leverages the quantum properties of superposition and interference to extract eigenvalue information efficiently, which is a key step in solving the linear system in the HHL algorithm.
+
+Would you like me to elaborate on any part of this explanation?
+
+Restricting quantum phase estimation to 1-bit of precision in the HHL algorithm has significant implications. Let's break this down:
+
+
+
+1. Meaning of 1-bit precision:
+   - This essentially means we're only distinguishing between two possibilities for each eigenvalue.
+   - We're effectively asking a yes/no question about each eigenvalue.
+
+2. Impact on eigenvalue estimation:
+   - Instead of getting a detailed value, we're only determining if an eigenvalue is in the upper or lower half of its possible range.
+   - For example, we might only determine if an eigenvalue is greater or less than 0.5 (assuming eigenvalues are normalized between 0 and 1).
+
+3. Consequences for HHL:
+   - Reduced accuracy: The solution to the linear system will be much less precise.
+   - Binary classification: It essentially turns the algorithm into a binary classifier for the eigenvalues.
+   - Loss of quantitative information: We lose detailed information about the magnitude of the eigenvalues.
+
+4. Potential benefits:
+   - Simplification: The circuit depth and complexity can be significantly reduced.
+   - Noise resilience: With only two possibilities, the algorithm might be more robust against certain types of quantum noise.
+
+5. Limitations:
+   - Not suitable for problems requiring high precision.
+   - May only be useful for rough estimations or binary decision problems.
+
+6. Overall implication:
+   - This restriction would fundamentally change the nature of the HHL algorithm from a precise linear system solver to a more approximate, binary decision tool.
+
+This trade-off between precision and simplicity/robustness is an active area of research in quantum algorithms, especially for near-term quantum devices with limited qubit counts and high noise levels.
+
+Would you like me to elaborate on any specific aspect of this explanation?
+
+Quantum hamiltonian learning can be used for track reconstruction in particle physics. 
+
+create a graph showing how the number of solutions scale with the system size ie. total number of doublets
+NlogN in the number of correct doublets 
