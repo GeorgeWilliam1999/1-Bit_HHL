@@ -1,6 +1,21 @@
 import numpy as np
 
-def find_hit_pairs(events : list, solution_vector : np.array):
+def find_hit_pairs(events: list, solution_vector: np.array):
+    """
+    Finds the geometry of the segments of numerous particle tracks.
+
+    Parameters:
+    events (list): A list of event objects. Each event contains hits, where each hit has a 'z' attribute indicating the layer.
+    solution_vector (np.array): A binary vector of dimension 2^n indexing all pairs of hits between each layer.
+                                It gives a 1 when the segment is present and 0 when the hits are not from the same particle.
+
+    Returns:
+    tuple: A tuple containing:
+        - hit_pairs (list): A list of tuples, where each tuple contains pairs of hits that form segments of particle tracks.
+        - layers (list): A list of layer identifiers.
+        - H (list): A list of lists, where each sublist contains hits for a specific layer.
+        - P (np.array): An array where each element represents the cumulative count of all possible segments up to that layer.
+    """
     hits_per_layer = {}
     for event in events:
         hits_on_layer = {f'{int(z)}': [h for h in event.hits if h.z == z] for z in set([h.z for h in event.hits])}
@@ -9,6 +24,7 @@ def find_hit_pairs(events : list, solution_vector : np.array):
     layers = list(hits_per_layer.keys())
     H = list(hits_per_layer.values())
 
+    # P is the cumulative sum of all possible segments
     P = np.zeros(len(layers))
     for i in range(1, len(layers)):
         count = 0
