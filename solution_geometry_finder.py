@@ -3,27 +3,28 @@ import matplotlib.pyplot as plt
 from trackhhl.event_model.event_model import Segment
 
 def find_hit_pairs(event,solution):
-        """
-        Finds and returns hit pairs from an event based on a given solution.
-        Args:
-            event (Event): An event object containing hits with attributes including 'z'.
-            solution (np.ndarray): A numpy array representing the solution with non-zero indices.
-        Returns:
-            tuple: A tuple containing:
-                - segments (list of Segment): A list of Segment objects created from the hit pairs.
-                - layers (list of str): A list of layer identifiers as strings.
-                - H (list of int): A list of hit counts per layer.
-                - P (np.ndarray): A numpy array representing the cumulative hit pair counts.
-        The function performs the following steps:
-            1. Groups hits by their 'z' coordinate into a dictionary `hits_on_layer`.
-            2. Counts the number of hits per layer and stores it in `hits_per_layer`.
-            3. Initializes lists `layers` and `H` to store layer identifiers and hit counts respectively.
-            4. Computes the cumulative hit pair counts `P`.
-            5. Identifies non-zero indices in the solution.
-            6. Iterates through the non-zero indices to find corresponding hit pairs.
-            7. Creates Segment objects from the hit pairs and returns them along with `layers`, `H`, and `P`.
-        """
     
+    """
+    Finds and returns hit pairs from an event based on a given solution.
+    Args:
+        event (Event): An event object containing hits with attributes including 'z'.
+        solution (np.ndarray): A numpy array representing the solution with non-zero indices.
+    Returns:
+        tuple: A tuple containing:
+            - segments (list of Segment): A list of Segment objects created from the hit pairs.
+            - layers (list of str): A list of layer identifiers as strings.
+            - H (list of int): A list of hit counts per layer.
+            - P (np.ndarray): A numpy array representing the cumulative hit pair counts.
+    The function performs the following steps:
+        1. Groups hits by their 'z' coordinate into a dictionary `hits_on_layer`.
+        2. Counts the number of hits per layer and stores it in `hits_per_layer`.
+        3. Initializes lists `layers` and `H` to store layer identifiers and hit counts respectively.
+        4. Computes the cumulative hit pair counts `P`.
+        5. Identifies non-zero indices in the solution.
+        6. Iterates through the non-zero indices to find corresponding hit pairs.
+        7. Creates Segment objects from the hit pairs and returns them along with `layers`, `H`, and `P`.
+    """
+
     hits_on_layer = {f'{int(z)}' : [h for h in event.hits if h.z == z] for z in set([h.z for h in event.hits])}
     hits_per_layer = {f'{int(z)}' : len(hits_on_layer[z]) for z in hits_on_layer.keys()}
 
