@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from trackhhl.event_model.event_model import Segment
 
 def find_hit_pairs(event,solution):
-    def find_hit_pairs(event, solution):
         """
         Finds and returns hit pairs from an event based on a given solution.
         Args:
